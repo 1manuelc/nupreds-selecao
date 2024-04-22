@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+	font-size: 62.5%;
+	box-sizing: border-box;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	vertical-align: baseline;
+
+	font-family: 'Inter', sans-serif;
+	list-style: none;
+	border: 0;
+}
+
+body {
+	overflow: hidden;
+	height: 100vh;
+}

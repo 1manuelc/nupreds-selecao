@@ -1,0 +1,54 @@
+main#chart-container {
+	grid-area: main;
+	height: 100%;
+	width: 100%;
+	height: inherit;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#chart-view {
+	height: 100%;
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+div.plot-container.plotly {
+	height: 94% !important;
+	width: 94% !important;
+}
+
+svg.main-svg {
+	height: 100%;
+	width: 100%;
+	border-radius: 1rem;
+}
+
+g.slicetext {
+	opacity: 0.8;
+}
+
+path.textline {
+	display: none;
+}
+
+@media (width <= 1000px) {
+	main {
+		width: 100vw;
+		height: 100%;
+	}
+
+	#chart-view {
+		height: 80%;
+		place-self: start;
+	}
+
+	div.plot-container.plotly {
+		height: 90% !important;
+		width: 90% !important;
+	}
+}

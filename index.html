@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Vite App</title>
+		<link rel="stylesheet" href="./src/css/styles.css" />
+	</head>
+	<body>
+		<div id="app">
+			<nav>
+				<button id="switcher-mobile"></button>
+				<h1>Visualizador Gráfico - VRA</h1>
+				<ul id="navbar-list">
+					<li class="navbar-item">
+						<h3 class="item-title">Filtro Principal:</h3>
+						<select
+							name="first-filter-select"
+							id="first-filter-select"
+							class="filter-select"
+						>
+							<option selected disabled value="-1">
+								Selecione o primeiro filtro
+							</option>
+							<option value="Voos">Vôos</option>
+							<option value="Voos cancelados">Vôos - Cancelados</option>
+						</select>
+					</li>
+					<li class="navbar-item">
+						<h3 class="item-title">Filtro Secundário:</h3>
+						<select
+							name="second-filter-select"
+							id="second-filter-select"
+							class="filter-select"
+						>
+							<option selected disabled value="-1">
+								Selecione o segundo filtro
+							</option>
+							<option value="Companhia">Companhia</option>
+							<option value="Aeroporto de Destino">Aeroporto de Destino</option>
+							<option value="Aeroporto de Origem">Aeroporto de Origem</option>
+							<option value="Dia de Chegada">Dia de Chegada</option>
+							<option value="Dia de Partida">Dia de Partida</option>
+						</select>
+					</li>
+					<li class="navbar-item">
+						<h3 class="item-title">Intervalo:</h3>
+						<span id="container-time-filter">
+							<span class="item-time-filter">
+								<label for="all-radio-time-filter">Tudo</label>
+								<input
+									checked
+									type="radio"
+									name="radio-time-filter"
+									id="all-radio-time-filter"
+									value="Tudo"
+								/>
+							</span>
+							<span class="item-time-filter">
+								<label for="day-radio-time-filter">Dia</label>
+								<input
+									type="radio"
+									name="radio-time-filter"
+									id="day-radio-time-filter"
+									value="Dia"
+								/>
+							</span>
+							<span class="item-time-filter">
+								<label for="month-radio-time-filter">Mês</label>
+								<input
+									type="radio"
+									name="radio-time-filter"
+									id="month-radio-time-filter"
+									value="Mês"
+								/>
+							</span>
+						</span>
+						<input type="date" name="filter-date" id="filter-date" />
+					</li>
+					<li class="navbar-item">
+						<h3 class="item-title">Tipo de gráfico:</h3>
+						<select
+							name="chart-type-filter-select"
+							id="chart-type-filter-select"
+							class="filter-select"
+						>
+							<option value="bar">Barras</option>
+							<option value="pie">Pizza</option>
+						</select>
+					</li>
+					<li>
+						<button id="button-plot">Plotar gráfico</button>
+					</li>
+				</ul>
+			</nav>
+			<main id="chart-container">
+				<div id="chart-view"></div>
+			</main>
+		</div>
+
+		<script
+			type="module"
+			src="https://cdn.plot.ly/plotly-2.31.1.min.js"
+		></script>
+		<script type="module" src="./src/js/handlers/handleInput.js"></script>
+		<script type="module" src="./src/js/main.js">
+			
+		</script>
+	</body>
+</html>

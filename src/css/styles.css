@@ -1,0 +1,34 @@
+@import url('./global.css');
+@import url('./phospor-icons/style.css');
+
+@import url('chart.css');
+@import url('nav.css');
+
+:root {
+	--gray-dark: #1e1e1e;
+	--gray-dark--hover: #434343;
+	--gray-medium: #232323;
+	--gray-light: #323232;
+	--blue-highlight: #1f77b4;
+	--blue-highlight--hover: #4290c6;
+	--blue-highlight--click: #23628d;
+}
+
+#app {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background-color: #f0f0f0;
+
+	display: grid;
+	grid-template-columns: 0.25fr 1fr;
+	grid-template-areas: 'nav main';
+}
+
+@media (width <= 1000px) {
+	#app {
+		display: flex;
+		flex-flow: column-reverse;
+		align-items: flex-start;
+	}
+}
