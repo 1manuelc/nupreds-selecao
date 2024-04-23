@@ -3,6 +3,12 @@
 Esta aplicação web objetiva consumir, filtrar e plotar em gráficos as informações extraídas um dataset (de janeiro de 2024) da base de dados pública VRA (Voo Regular Ativo) em formato .csv.<br>
 Utiliza dependências externas `PapaParse`, `Plotly` e o bundler `Vite`, com a linguagem de programação `JavaScript`.
 
+<div align="center">
+  <img src="./public/print-desktop.png" width="600px"></img>
+  <img src="./public/print-mobile.png" width="214px"></img>
+</div>
+
+
 ## Instalação
 
 Para testar o projeto em sua máquina, você deve ter instalado o runtime `Node.js` e seu gerenciador de pacotes `npm`, bem como um editor de texto com acesso ao terminal, como o `Visual Studio Code`.
