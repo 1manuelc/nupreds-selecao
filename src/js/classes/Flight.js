@@ -1,4 +1,25 @@
 export default class Flight {
+	sigla_icao_empresa_aerea;
+	empresa_aerea;
+	numero_voo;
+	codigo_di;
+	codigo_tipo_linha;
+	modelo_equipamento;
+	numero_de_assentos;
+	sigla_icao_aeroporto_origem;
+	descricao_aeroporto_origem;
+	partida_prevista;
+	partida_real;
+	sigla_icao_aeroporto_destino;
+	descricao_aeroporto_destino;
+	chegada_prevista;
+	chegada_real;
+	situacao_voo;
+	justificativa;
+	referencia;
+	situacao_partida;
+	situacao_chegada;
+
 	constructor(
 		sigla_icao_empresa_aerea,
 		empresa_aerea,

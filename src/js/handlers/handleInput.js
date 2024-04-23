@@ -48,7 +48,7 @@ export function handleInputs() {
 
 function convertDateInputToObject(input) {
 	const date = new Date(input + 'T00:00:00');
-	const offset = date.getTimezoneOffset(); // Obtém a diferença de fuso horário em minutos
+	const offset = date.getTimezoneOffset();
 	date.setMinutes(date.getMinutes() + offset);
 	return date;
 }

@@ -2,7 +2,7 @@ import Papa from 'papaparse';
 import Flight from '../classes/Flight.js';
 import { getAbortedFlights } from '../tools/AbortedFilter.js';
 import Companies from '../classes/Companies.js';
-import { Destinations } from '../classes/Destinations.js';
+import { Airports } from '../classes/Airports.js';
 import { getFlightsInDate, getFlightsInMonth } from '../tools/DateFilter.js';
 import { getFlightsCount } from '../tools/CountFlights.js';
 import Days from '../classes/Days.js';
@@ -55,7 +55,7 @@ export async function getFlights(filePath) {
 	return data;
 }
 
-export function getPrimaryData(option, secondData = null, dateModifier = null) {
+export function getPrimaryData(option) {
 	switch (option) {
 		case 'Voos':
 			return data;
@@ -71,12 +71,12 @@ export function getSecondaryData(option, mainData) {
 			return [company.flights, company.companies];
 		}
 		case 'Aeroporto de Destino': {
-			const destiny = new Destinations(mainData, 'destino');
-			return [destiny.flights, destiny.destinations];
+			const airports = new Airports(mainData, 'destino');
+			return [airports.flights, airports.airports];
 		}
 		case 'Aeroporto de Origem': {
-			const destiny = new Destinations(mainData, 'origem');
-			return [destiny.flights, destiny.destinations];
+			const airports = new Airports(mainData, 'origem');
+			return [airports.flights, airports.airports];
 		}
 
 		case 'Dia de Chegada': {
