@@ -1,9 +1,6 @@
 {
   "name": "nupreds-selecao",
   "version": "0.0.0",
-  "devDependencies": {
-    "vite": "^5.2.0"
-  },
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -13,6 +10,7 @@
   "type": "module",
   "dependencies": {
     "papaparse": "^5.4.1",
+    "vite": "^5.2.10",
     "vite-plugin-node-polyfills": "^0.21.0"
   }
 }
