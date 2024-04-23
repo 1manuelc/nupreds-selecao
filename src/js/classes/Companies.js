@@ -1,3 +1,5 @@
+// TODO: Substituir loops por métodos nativos de arrays
+
 import { getFlightsCount } from '../tools/CountFlights';
 
 export default class Companies {
