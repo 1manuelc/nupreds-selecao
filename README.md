@@ -1,6 +1,6 @@
 # VRA - Visualizador Gráfico
 
-Esta aplicação web objetiva consumir, filtrar e plotar em gráficos as informações extraídas de datasets da base de dados pública VRA (Voo Regular Ativo) em formato .csv.<br>
+Esta aplicação web objetiva consumir, filtrar e plotar em gráficos as informações extraídas um dataset (de janeiro de 2024) da base de dados pública VRA (Voo Regular Ativo) em formato .csv.<br>
 Utiliza dependências externas `PapaParse`, `Plotly` e o bundler `Vite`, com a linguagem de programação `JavaScript`.
 
 ## Instalação
