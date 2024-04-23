@@ -1,18 +1,13 @@
 export function getAbortedFlights(data, returnCount = false) {
-	const abortedFlights = [];
+	const abortedFlights = data.filter((flight) => {
+		const situation = flight['situacao_voo'];
+		const justification = flight['justificativa'];
 
-	for (let i = 0; i < data.length; i++) {
-		const situation = data[i]['situacao_voo'];
-		const justification = data[i]['justificativa'];
-
-		if (situation) {
-			if (situation.toLowerCase().match('cancelado'))
-				abortedFlights.push(data[i]);
-		} else if (justification) {
-			if (justification.toLowerCase().match('cancelado'))
-				abortedFlights.push(data[i]);
-		}
-	}
+		return (
+			(situation && situation.toLowerCase().includes('cancelado')) ||
+			(justification && justification.toLowerCase().includes('cancelado'))
+		);
+	});
 
 	return returnCount ? abortedFlights.length : abortedFlights;
 }

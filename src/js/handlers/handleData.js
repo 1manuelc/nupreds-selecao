@@ -108,7 +108,7 @@ export function getFilteredByDateData(option, mainData, date = null) {
 		case 'Mês': {
 			return [
 				mainData.map((elt) => {
-					return getFlightsInMonth(elt, 'partida', date.getMonth(), true);
+					return getFlightsInMonth(elt, 'partida', date, true);
 				}),
 				`${(date.getMonth() + 1)
 					.toString()

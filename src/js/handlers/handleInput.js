@@ -6,33 +6,16 @@ import {
 } from './handleData.js';
 
 export function handleInputs() {
-	let firstValue, secondValue, dateFilterType, date, chartType;
-
-	const firstSelect = document.querySelector('#first-filter-select');
-	firstValue = firstSelect.value;
-
-	const secondSelect = document.querySelector('#second-filter-select');
-	secondValue = secondSelect.value;
-
-	const dateRadioValue = document.querySelector(
+	const firstValue = document.querySelector('#first-filter-select').value;
+	const secondValue = document.querySelector('#second-filter-select').value;
+	const dateFilterType = document.querySelector(
 		'input[name="radio-time-filter"]:checked'
 	).value;
-	dateFilterType = dateRadioValue;
 
-	const dateValue = document.querySelector('input[name="filter-date"]').value;
+	const dateInput = document.querySelector('input[name="filter-date"]').value;
+	const date = convertDateInputToObject(dateInput);
 
-	(function parseDate() {
-		const splittedDate = dateValue.split('-');
-		if (splittedDate[0] !== '') {
-			splittedDate[1] = (parseInt(splittedDate[1]) - 1)
-				.toString()
-				.padStart(2, '0');
-			date = new Date(splittedDate[0], splittedDate[1], splittedDate[2]);
-		} else date = null;
-	})();
-
-	const chartSelect = document.querySelector('#chart-type-filter-select');
-	chartType = chartSelect.value;
+	const chartType = document.querySelector('#chart-type-filter-select').value;
 
 	const mainData = getPrimaryData(firstValue);
 	const secondaryData = getSecondaryData(secondValue, mainData);
@@ -61,4 +44,11 @@ export function handleInputs() {
 			yAxis
 		);
 	}
+}
+
+function convertDateInputToObject(input) {
+	const date = new Date(input + 'T00:00:00');
+	const offset = date.getTimezoneOffset(); // Obtém a diferença de fuso horário em minutos
+	date.setMinutes(date.getMinutes() + offset);
+	return date;
 }

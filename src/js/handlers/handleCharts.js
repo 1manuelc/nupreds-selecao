@@ -1,10 +1,3 @@
-/**
- *
- * @param {String} chartLabel
- * @param {Array} yAxis
- * @param {Array} xAxis
- * @param {String} chartType
- */
 export function drawBarChart(chartLabel, yAxis, xAxis, chartType = 'bar') {
 	const fontSize = getFontSizeByWindow();
 	const data = [
@@ -33,8 +26,7 @@ export function drawBarChart(chartLabel, yAxis, xAxis, chartType = 'bar') {
 
 function getFontSizeByWindow() {
 	const width = window.innerWidth;
-	if (width < 672) return width / 56;
-	else return 12;
+	return width < 672 ? width / 56 : 12;
 }
 
 export function drawPieChart(chartLabel, yAxis, xAxis) {
