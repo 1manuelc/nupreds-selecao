@@ -8,13 +8,13 @@ export default class Companies {
 	flights = [];
 
 	constructor(data) {
-		this.companies = getCompanyNames(data, false);
+		this.companies = getCompaniesNames(data, false);
 		this.flights = getFlightObjects(data, this.companies);
 		this.flightsCountByCompany = getFlightsCount(this.flights);
 	}
 }
 
-function getCompanyNames(data) {
+function getCompaniesNames(data) {
 	let companiesVector = [];
 
 	for (let i = 0; i < data.length; i++) {

@@ -9,7 +9,7 @@ export function drawBarChart(chartLabel, yAxis, xAxis, chartType = 'bar') {
 		},
 	];
 
-	var layout = {
+	const layout = {
 		title: chartLabel,
 		font: { size: fontSize },
 		xaxis: {
@@ -19,19 +19,14 @@ export function drawBarChart(chartLabel, yAxis, xAxis, chartType = 'bar') {
 		},
 	};
 
-	var config = { responsive: true, scrollZoom: true };
+	const config = { responsive: true, scrollZoom: true };
 
 	Plotly.newPlot('chart-view', data, layout, config);
 }
 
-function getFontSizeByWindow() {
-	const width = window.innerWidth;
-	return width < 672 ? width / 56 : 12;
-}
-
 export function drawPieChart(chartLabel, yAxis, xAxis) {
 	const fontSize = getFontSizeByWindow();
-	var data = [
+	const data = [
 		{
 			values: yAxis,
 			labels: xAxis,
@@ -40,11 +35,16 @@ export function drawPieChart(chartLabel, yAxis, xAxis) {
 		},
 	];
 
-	var layout = {
+	const layout = {
 		title: chartLabel,
-		font: { size: fontSize },
-		showlegend: false,
+		font: { size: 10 },
+		// showlegend: false,
 	};
 
 	Plotly.newPlot('chart-view', data, layout, { responsive: true });
+}
+
+function getFontSizeByWindow() {
+	const width = window.innerWidth;
+	return width < 672 ? width / 56 : 12;
 }

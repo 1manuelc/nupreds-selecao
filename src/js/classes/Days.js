@@ -9,7 +9,7 @@ export default class Days {
 
 	constructor(data, keyName) {
 		this.days = getDays(data, keyName);
-		this.flights = getFlights(this.days, data, keyName);
+		this.flights = getFlightObjects(data, this.days, keyName);
 		this.flightsCountByDay = getFlightsCount(this.flights);
 	}
 }
@@ -47,7 +47,7 @@ function getPossibleKeynames(keyName) {
 	return keyNames;
 }
 
-function getFlights(days, data, keyName) {
+function getFlightObjects(data, days, keyName) {
 	const flightsInDays = [];
 	const keyNames = getPossibleKeynames(keyName);
 
