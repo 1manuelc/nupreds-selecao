@@ -3,9 +3,9 @@ export function getFlightsInDate(data, keyName, date, returnCount = false) {
 		const keyNames = [];
 
 		if (keyName === 'chegada') {
-			keyNames.push('chegada_prevista', 'chegada_real');
+			keyNames.push('chegada_prevista');
 		} else if (keyName === 'partida') {
-			keyNames.push('partida_prevista', 'partida_real');
+			keyNames.push('partida_prevista');
 		} else if (keyName === '*') {
 			keyNames.push(
 				'chegada_prevista',
@@ -16,7 +16,7 @@ export function getFlightsInDate(data, keyName, date, returnCount = false) {
 		}
 
 		return keyNames.some((key) => {
-			return flight[key] && date.toDateString() === flight[key].toDateString();
+			return flight[key] && date === flight[key];
 		});
 	});
 
@@ -28,20 +28,18 @@ export function getFlightsInMonth(data, keyName, date, returnCount = false) {
 		const keyNames = [];
 
 		if (keyName === 'chegada') {
-			keyNames.push('chegada_prevista', 'chegada_real');
+			keyNames.push('chegada_prevista');
 		} else if (keyName === 'partida') {
-			keyNames.push('partida_prevista', 'partida_real');
+			keyNames.push('partida_prevista');
 		} else if (keyName === '*') {
 			keyNames.push(
 				'chegada_prevista',
-				'chegada_real',
 				'partida_prevista',
-				'partida_real'
 			);
 		}
 
 		return keyNames.some((key) => {
-			return flight[key] && date.getMonth() === flight[key].getMonth();
+			return flight[key] && date.split('/')[1] === flight[key].split('/')[1];
 		});
 	});
 

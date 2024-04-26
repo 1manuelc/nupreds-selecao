@@ -8,7 +8,6 @@ import { getFlightsCount } from '../tools/CountFlights.js';
 // VRA_2024_01.csv
 // testTable.csv
 let data = await getFlights('./VRA_2024_01.csv');
-console.log(data);
 
 export async function getFlights(filePath) {
 	const response = await fetch(filePath);
@@ -93,26 +92,16 @@ export function getSecondaryData(option, mainData) {
 export function getFilteredByDateData(option, mainData, date = null) {
 	switch (option) {
 		case 'Tudo':
-			return [getFlightsCount(mainData), 'Todo o Período'];
+			return getFlightsCount(mainData);
 		case 'Dia': {
-			return [
-				mainData.map((elt) => {
-					return getFlightsInDate(elt, 'partida', date, true);
-				}),
-				`${date.getDay().toString().padStart(2, '0')}/${(date.getMonth() + 1)
-					.toString()
-					.padStart(2, '0')}/${date.getFullYear()}`,
-			];
+			return mainData.map((elt) => {
+				return getFlightsInDate(elt, 'partida', date, true);
+			});
 		}
 		case 'Mês': {
-			return [
-				mainData.map((elt) => {
-					return getFlightsInMonth(elt, 'partida', date, true);
-				}),
-				`${(date.getMonth() + 1)
-					.toString()
-					.padStart(2, '0')}/${date.getFullYear()}`,
-			];
+			return mainData.map((elt) => {
+				return getFlightsInMonth(elt, 'partida', date, true);
+			});
 		}
 	}
 }

@@ -24,7 +24,7 @@ class UserInputs {
 		).value;
 		this.date = convertDateInputToObject(
 			document.querySelector('input[name="filter-date"]').value
-		);
+		).toLocaleDateString('PT-BR');
 		this.chartType = document.querySelector('#chart-type-filter-select').value;
 	}
 }
@@ -38,14 +38,16 @@ export function handleInputs() {
 		secondaryData[0],
 		inputs.date
 	);
-	const xAxis = resultArray[0];
+	const xAxis = resultArray;
 	const yAxis = secondaryData[1];
 
 	if (inputs.chartType === 'bar') {
 		drawBarChart(
 			`${inputs.firstFilterOption} por ${
 				inputs.secondFilterOption
-			} (totalizando ${xAxis.reduce((ac, i) => ac + i)} em ${resultArray[1]})`,
+			} (totalizando ${xAxis.reduce(
+				(ac, i) => ac + i
+			)} em ${formatDateByDateFilter(inputs.dataFilterOption, inputs.date)})`,
 			xAxis,
 			yAxis
 		);
@@ -53,7 +55,9 @@ export function handleInputs() {
 		drawPieChart(
 			`${inputs.firstFilterOption} por ${
 				inputs.secondFilterOption
-			} (totalizando ${xAxis.reduce((ac, i) => ac + i)} em ${resultArray[1]})`,
+			} (totalizando ${xAxis.reduce(
+				(ac, i) => ac + i
+			)} em ${formatDateByDateFilter(inputs.dataFilterOption, inputs.date)})`,
 			xAxis,
 			yAxis
 		);
@@ -65,4 +69,17 @@ function convertDateInputToObject(input) {
 	const offset = date.getTimezoneOffset();
 	date.setMinutes(date.getMinutes() + offset);
 	return date;
+}
+
+function formatDateByDateFilter(dataFilterOption, dateStr) {
+	switch (dataFilterOption) {
+		case 'Tudo':
+			return 'Todo o Período';
+		case 'Dia':
+			return `${dateStr.split('/')[0]}/${dateStr.split('/')[1]}/${
+				dateStr.split('/')[2]
+			}`;
+		case 'Mês':
+			return `${dateStr.split('/')[1]}/${dateStr.split('/')[2]}`;
+	}
 }
