@@ -1,11 +1,6 @@
-export function drawBarChart(
-	chartLabel,
-	yAxis,
-	xAxis,
-	chartType = 'bar',
-) {
+export function drawBarChart(chartLabel, yAxis, xAxis, chartType = 'bar') {
 	const fontSize = getFontSizeByWindow();
-	
+
 	const data = [
 		{
 			x: xAxis,
@@ -46,9 +41,10 @@ export function drawPieChart(chartLabel, yAxis, xAxis, plotItemsLimit = null) {
 
 	const layout = {
 		title: chartLabel,
-		font: { size: fontSize},
+		font: { size: fontSize },
 		legend: {
 			font: { size: 10 },
+			itemsizing: 'fraction',
 		},
 		showlegend: willShowLegend,
 	};
