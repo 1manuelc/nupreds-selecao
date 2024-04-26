@@ -50,12 +50,11 @@ path.textline {
 
 .error-view {
 	padding: 1rem;
-	width: 75%;
+	width: max-content;
 	max-width: 36rem;
 
-	border: 0.3rem solid red;
+	border: 0.2rem solid red;
 	border-radius: 1rem;
-	background-color: #000;
 	color: #fff;
 
 	display: flex;
