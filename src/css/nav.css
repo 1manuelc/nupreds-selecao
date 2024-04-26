@@ -84,8 +84,7 @@ button:active {
 }
 
 button,
-#button-plot,
-#button-send-file {
+#button-plot {
 	padding: 0.8rem 0 0.8rem 0;
 	width: 100%;
 
@@ -144,14 +143,19 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 @media (width <= 1000px) {
 	nav {
-		padding: 0;
 		overflow: hidden;
+
+		padding: 0;
 		position: absolute;
 		width: 100%;
+
+		justify-content: flex-start;
 
 		transform: translateY(20vh);
 		transition: transform 0.3s ease-in-out;
 		z-index: 1;
+
+		border-radius: 2rem 2rem 0 0;
 	}
 
 	nav.collapsed {
@@ -160,15 +164,15 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 	#switcher-mobile {
 		display: block;
-		width: 4rem;
 		height: 4rem;
-		margin-top: -16rem;
-
-		place-self: center start;
 
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		place-self: center start;
+		background-color: var(--gray-light);
+
+		border-radius: 2rem 2rem 0 0;
 	}
 
 	nav.collapsed #switcher-mobile::after {
@@ -176,10 +180,10 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	}
 
 	#switcher-mobile::after {
+		padding-top: 0.7rem;
 		font-family: 'Phosphor-Fill' !important;
 		content: '\ECA6';
 		font-size: 2rem;
-		padding-top: 0.7rem;
 		transform: rotate(180deg);
 		transition: transform 0.4s ease-in-out;
 	}
