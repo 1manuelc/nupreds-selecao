@@ -22,6 +22,7 @@ class UserInputs {
 		this.dataFilterOption = document.querySelector(
 			'input[name="radio-time-filter"]:checked'
 		).value;
+
 		this.date = convertDateInputToObject(
 			document.querySelector('input[name="filter-date"]').value
 		).toLocaleDateString('PT-BR');
@@ -47,7 +48,7 @@ export function handleInputs() {
 				inputs.secondFilterOption
 			} (totalizando ${xAxis.reduce(
 				(ac, i) => ac + i
-			)} em ${formatDateByDateFilter(inputs.dataFilterOption, inputs.date)})`,
+			)} em ${formatDateToChartTitle(inputs.dataFilterOption, inputs.date)})`,
 			xAxis,
 			yAxis
 		);
@@ -57,7 +58,7 @@ export function handleInputs() {
 				inputs.secondFilterOption
 			} (totalizando ${xAxis.reduce(
 				(ac, i) => ac + i
-			)} em ${formatDateByDateFilter(inputs.dataFilterOption, inputs.date)})`,
+			)} em ${formatDateToChartTitle(inputs.dataFilterOption, inputs.date)})`,
 			xAxis,
 			yAxis
 		);
@@ -71,7 +72,7 @@ function convertDateInputToObject(input) {
 	return date;
 }
 
-function formatDateByDateFilter(dataFilterOption, dateStr) {
+function formatDateToChartTitle(dataFilterOption, dateStr) {
 	switch (dataFilterOption) {
 		case 'Tudo':
 			return 'Todo o Período';
