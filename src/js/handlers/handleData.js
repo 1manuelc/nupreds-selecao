@@ -1,15 +1,14 @@
 import Papa from 'papaparse';
 import Flight from '../classes/Flight.js';
 import { getAbortedFlights } from '../tools/AbortedFilter.js';
-import Companies from '../classes/Companies.js';
-import { Airports } from '../classes/Airports.js';
+import Category from '../classes/Category.js';
 import { getFlightsInDate, getFlightsInMonth } from '../tools/DateFilter.js';
 import { getFlightsCount } from '../tools/CountFlights.js';
-import Days from '../classes/Days.js';
 
 // VRA_2024_01.csv
 // testTable.csv
 let data = await getFlights('./VRA_2024_01.csv');
+console.log(data);
 
 export async function getFlights(filePath) {
 	const response = await fetch(filePath);
@@ -67,26 +66,26 @@ export function getPrimaryData(option) {
 export function getSecondaryData(option, mainData) {
 	switch (option) {
 		case 'Companhia': {
-			const company = new Companies(mainData);
-			return [company.flights, company.companies];
+			const company = new Category(mainData, 'Companies');
+			return [company.flights, company.names];
 		}
 		case 'Aeroporto de Destino': {
-			const airports = new Airports(mainData, 'destino');
-			return [airports.flights, airports.airports];
+			const airports = new Category(mainData, 'Airports', 'destino');
+			return [airports.flights, airports.names];
 		}
 		case 'Aeroporto de Origem': {
-			const airports = new Airports(mainData, 'origem');
-			return [airports.flights, airports.airports];
+			const airports = new Category(mainData, 'Airports', 'origem');
+			return [airports.flights, airports.names];
 		}
 
 		case 'Dia de Chegada': {
-			const days = new Days(mainData, 'chegada');
-			return [days.flights, days.days];
+			const days = new Category(mainData, 'Days', 'chegada');
+			return [days.flights, days.names];
 		}
 
 		case 'Dia de Partida': {
-			const days = new Days(mainData, 'partida');
-			return [days.flights, days.days];
+			const days = new Category(mainData, 'Days', 'partida');
+			return [days.flights, days.names];
 		}
 	}
 }

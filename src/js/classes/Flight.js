@@ -67,10 +67,11 @@ export default class Flight {
 	convertStringToData(string) {
 		if (string !== '' && string !== null) {
 			const dateString = string;
-			const [datePart, timePart] = dateString.split(' ');
+			const datePart = dateString.split(' ')[0];
 			const [day, month, year] = datePart.split('/');
-			const [hour, minute] = timePart.split(':');
-			return new Date(year, month - 1, day, hour, minute);
+			return new Date(year, month - 1, day).toLocaleDateString(
+				'PT-BR'
+			);
 		}
 	}
 }
