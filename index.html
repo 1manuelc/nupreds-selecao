@@ -20,7 +20,7 @@
 							id="first-filter-select"
 							class="filter-select"
 						>
-							<option selected disabled value="-1">
+							<option selected disabled value="">
 								Selecione o primeiro filtro
 							</option>
 							<option value="Voos">Vôos</option>
@@ -34,7 +34,7 @@
 							id="second-filter-select"
 							class="filter-select"
 						>
-							<option selected disabled value="-1">
+							<option selected disabled value="">
 								Selecione o segundo filtro
 							</option>
 							<option value="Companhia">Companhia</option>
@@ -95,7 +95,13 @@
 				</ul>
 			</nav>
 			<main id="chart-container">
-				<div id="chart-view"></div>
+				<div id="chart-view">
+					<div id="error-container">
+						<span class="error-view"
+							><i class="ph-fill ph-x"></i> <span id="error-message"></span
+						></span>
+					</div>
+				</div>
 			</main>
 		</div>
 
@@ -103,6 +109,7 @@
 			type="module"
 			src="https://cdn.plot.ly/plotly-2.31.1.min.js"
 		></script>
+		<script src="https://unpkg.com/@phosphor-icons/web"></script>
 		<script type="module" src="./src/js/handlers/handleInput.js"></script>
 		<script type="module" src="./src/js/main.js"></script>
 	</body>
