@@ -5,41 +5,55 @@ import {
 	getSecondaryData,
 } from './handleData.js';
 
+class UserInputs {
+	firstFilterOption;
+	secondFilterOption;
+	dataFilterOption;
+	date;
+	chartType;
+
+	constructor() {
+		this.firstFilterOption = document.querySelector(
+			'#first-filter-select'
+		).value;
+		this.secondFilterOption = document.querySelector(
+			'#second-filter-select'
+		).value;
+		this.dataFilterOption = document.querySelector(
+			'input[name="radio-time-filter"]:checked'
+		).value;
+		this.date = convertDateInputToObject(
+			document.querySelector('input[name="filter-date"]').value
+		);
+		this.chartType = document.querySelector('#chart-type-filter-select').value;
+	}
+}
+
 export function handleInputs() {
-	const firstValue = document.querySelector('#first-filter-select').value;
-	const secondValue = document.querySelector('#second-filter-select').value;
-	const dateFilterType = document.querySelector(
-		'input[name="radio-time-filter"]:checked'
-	).value;
-
-	const dateInput = document.querySelector('input[name="filter-date"]').value;
-	const date = convertDateInputToObject(dateInput);
-
-	const chartType = document.querySelector('#chart-type-filter-select').value;
-
-	const mainData = getPrimaryData(firstValue);
-	const secondaryData = getSecondaryData(secondValue, mainData);
+	const inputs = new UserInputs();
+	const mainData = getPrimaryData(inputs.firstFilterOption);
+	const secondaryData = getSecondaryData(inputs.secondFilterOption, mainData);
 	const resultArray = getFilteredByDateData(
-		dateFilterType,
+		inputs.dataFilterOption,
 		secondaryData[0],
-		date
+		inputs.date
 	);
 	const xAxis = resultArray[0];
 	const yAxis = secondaryData[1];
 
-	if (chartType === 'bar') {
+	if (inputs.chartType === 'bar') {
 		drawBarChart(
-			`${firstValue} por ${secondValue} (totalizando ${xAxis.reduce(
-				(ac, i) => ac + i
-			)} em ${resultArray[1]})`,
+			`${inputs.firstFilterOption} por ${
+				inputs.secondFilterOption
+			} (totalizando ${xAxis.reduce((ac, i) => ac + i)} em ${resultArray[1]})`,
 			xAxis,
 			yAxis
 		);
-	} else if (chartType === 'pie') {
+	} else if (inputs.chartType === 'pie') {
 		drawPieChart(
-			`${firstValue} por ${secondValue} (totalizando ${xAxis.reduce(
-				(ac, i) => ac + i
-			)} em ${resultArray[1]})`,
+			`${inputs.firstFilterOption} por ${
+				inputs.secondFilterOption
+			} (totalizando ${xAxis.reduce((ac, i) => ac + i)} em ${resultArray[1]})`,
 			xAxis,
 			yAxis
 		);
