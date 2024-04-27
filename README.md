@@ -1,5 +1,7 @@
 # VRA - Visualizador Gráfico
 
+links rápidos: [Deploy atualizado - Vercel](https://1manuelc-nupreds-selecao.vercel.app/), [Relatório técnico do projeto](https://drive.google.com/file/d/1k7C3YbIgguRUlBAo8VAI0-TbU-hlhMdC/view?usp=sharing).
+
 Esta aplicação web objetiva consumir, filtrar e plotar em gráficos as informações extraídas um dataset (de janeiro de 2024) da base de dados pública VRA (Voo Regular Ativo) em formato .csv.<br>
 Utiliza dependências externas `PapaParse`, `Plotly` e o bundler `Vite`, com a linguagem de programação `JavaScript`.
 
